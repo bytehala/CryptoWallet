@@ -22,19 +22,57 @@ import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
+const CoinQuickCard = () => {
+  return (
+    <View style={styles.quickCoinCard}>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#e5b64b', '#dd8939']}
+        style={[styles.linearGradient]}>
+        <View style={styles.cardContent}>
+          <Icon name="rowing" />
+          <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
+          <Text style={{backgroundColor: 'green'}}>CARD DIVIDER</Text>
+        </View>
+      </LinearGradient>
+    </View>
+  );
+};
+
+const CoinQuickCard2 = () => {
+  return (
+    <View style={styles.quickCoinCard}>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#9751e3', '#7037e7']}
+        style={[styles.linearGradient]}>
+        <View style={styles.cardContent}>
+          <Icon name="rowing" />
+          <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
+          <Text style={{backgroundColor: 'green'}}>CARD DIVIDER</Text>
+        </View>
+      </LinearGradient>
+    </View>
+  );
+};
+
 const CoinInfoCard = () => {
   return (
-    <LinearGradient
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 0}}
-      colors={['#515b7a', '#242a3f']}
-      style={styles.linearGradient}>
-      <View style={styles.cardContent}>
-        <Icon name="rowing" />
-        <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
-        <Text style={{backgroundColor: 'green'}}>CARD DIVIDER</Text>
-      </View>
-    </LinearGradient>
+    <View style={styles.coinCard}>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#515b7a', '#242a3f']}
+        style={[styles.linearGradient]}>
+        <View style={styles.cardContent}>
+          <Icon name="rowing" />
+          <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
+          <Text style={{backgroundColor: 'green'}}>CARD DIVIDER</Text>
+        </View>
+      </LinearGradient>
+    </View>
   );
 };
 
@@ -42,23 +80,28 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: '#404968'
   };
 
   return (
     <SafeAreaProvider style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View>
-          <CoinInfoCard />
-          <CoinInfoCard />
-          <CoinInfoCard />
-          <CoinInfoCard />
-        </View>
-      </ScrollView>
+
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={backgroundStyle}>
+          <Header />
+          <View>
+            <View style={{flexDirection: "row"}}>
+            <CoinQuickCard />
+            <CoinQuickCard2 />
+            </View>
+            <CoinInfoCard />
+            <CoinInfoCard />
+            <CoinInfoCard />
+            <CoinInfoCard />
+          </View>
+        </ScrollView>
     </SafeAreaProvider>
   );
 };
@@ -85,8 +128,35 @@ const styles = StyleSheet.create({
     borderColor: 'transparent'
   },
   coinCard: {
-    shadowColor: 'red',
-    borderRadius: 10,
+    height: 72,
+    borderColor: 'black',
+    backgroundColor: 'white',
+    marginHorizontal: 16,
+    marginVertical: 6,
+    borderRadius: 8,
+    shadowOffset: {
+      width: -3,
+      height: 3
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    elevation: 8,
+  },
+  quickCoinCard: {
+    height: 72,
+    borderColor: 'black',
+    backgroundColor: 'white',
+    marginLeft: 16,
+    marginVertical: 8,
+    borderRadius: 8,
+    shadowOffset: {
+      width: -3,
+      height: 3
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
+    elevation: 8,
+    width: 170,
   },
   cardContent: {
     flexDirection: 'row',
@@ -94,9 +164,7 @@ const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
     borderRadius: 8,
-    margin: 8,
-    padding: 8,
-    height: 64,
+    height: 72,
   },
   buttonText: {
     fontSize: 18,
