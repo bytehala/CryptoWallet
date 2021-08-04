@@ -29,7 +29,12 @@ const CoinQuickCard = () => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         colors={['#e5b64b', '#dd8939']}
-        style={[styles.linearGradient]}>
+        style={[
+          styles.linearGradient,
+          {
+            borderRadius: 8,
+          },
+        ]}>
         <View style={styles.cardContent}>
           <Icon name="rowing" />
           <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
@@ -47,7 +52,12 @@ const CoinQuickCard2 = () => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         colors={['#9751e3', '#7037e7']}
-        style={[styles.linearGradient]}>
+        style={[
+          styles.linearGradient,
+          {
+            borderRadius: 8,
+          },
+        ]}>
         <View style={styles.cardContent}>
           <Icon name="rowing" />
           <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
@@ -65,7 +75,8 @@ const CoinInfoCard = () => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         colors={['#515b7a', '#242a3f']}
-        style={[styles.linearGradient]}>
+        style={[styles.linearGradient, {
+          borderRadius: 8,}]}>
         <View style={styles.cardContent}>
           <Icon name="rowing" />
           <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
@@ -80,29 +91,30 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: '#404968'
+    backgroundColor: '#404968',
   };
 
   return (
-    <SafeAreaProvider style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-          <Header />
-          <View>
-            <View style={{flexDirection: "row"}}>
-            <CoinQuickCard />
-            <CoinQuickCard2 />
-            </View>
-            <CoinInfoCard />
-            <CoinInfoCard />
-            <CoinInfoCard />
-            <CoinInfoCard />
-          </View>
-        </ScrollView>
-    </SafeAreaProvider>
+    <ScrollView
+      contentInsetAdjustmentBehavior="automatic"
+      contentContainerStyle={{ marginTop: -50 }}
+      style={backgroundStyle}>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#9383e6', '#d47db0']}
+        style={[styles.linearGradient, {height: 270}]}></LinearGradient>
+      <View>
+        <View style={{flexDirection: 'row'}}>
+          <CoinQuickCard />
+          <CoinQuickCard2 />
+        </View>
+        <CoinInfoCard />
+        <CoinInfoCard />
+        <CoinInfoCard />
+        <CoinInfoCard />
+      </View>
+    </ScrollView>
   );
 };
 
@@ -125,7 +137,7 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: 'transparent',
-    borderColor: 'transparent'
+    borderColor: 'transparent',
   },
   coinCard: {
     height: 72,
@@ -136,7 +148,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     shadowOffset: {
       width: -3,
-      height: 3
+      height: 3,
     },
     shadowOpacity: 0.25,
     shadowRadius: 5,
@@ -151,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     shadowOffset: {
       width: -3,
-      height: 3
+      height: 3,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3,
@@ -163,7 +175,6 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     flex: 1,
-    borderRadius: 8,
     height: 72,
   },
   buttonText: {
