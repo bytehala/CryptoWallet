@@ -17,49 +17,24 @@ import {
 } from 'react-native';
 
 import {Card, Icon} from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
-interface SectionProps {
-  children: any;
-  title: string;
-}
-
-const Section: React.FC<SectionProps> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
 const CoinInfoCard = () => {
   return (
-    <Card>
-      <Icon
-  name='rowing' />
-      <Card.Title>CARD WITH DIVIDER</Card.Title>
-      <Card.Divider />
-    </Card>
+    <LinearGradient
+      start={{x: 0, y: 0}}
+      end={{x: 1, y: 0}}
+      colors={['#515b7a', '#242a3f']}
+      style={styles.linearGradient}>
+      <View style={styles.cardContent}>
+        <Icon name="rowing" />
+        <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
+        <Text style={{backgroundColor: 'green'}}>CARD DIVIDER</Text>
+      </View>
+    </LinearGradient>
   );
 };
 
@@ -72,19 +47,18 @@ const App = () => {
 
   return (
     <SafeAreaProvider style={backgroundStyle}>
-
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-          <Header />
-          <View>
-            <CoinInfoCard />
-            <CoinInfoCard />
-            <CoinInfoCard />
-            <CoinInfoCard />
-          </View>
-        </ScrollView>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
+        <Header />
+        <View>
+          <CoinInfoCard />
+          <CoinInfoCard />
+          <CoinInfoCard />
+          <CoinInfoCard />
+        </View>
+      </ScrollView>
     </SafeAreaProvider>
   );
 };
@@ -105,6 +79,32 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  card: {
+    backgroundColor: 'transparent',
+    borderColor: 'transparent'
+  },
+  coinCard: {
+    shadowColor: 'red',
+    borderRadius: 10,
+  },
+  cardContent: {
+    flexDirection: 'row',
+  },
+  linearGradient: {
+    flex: 1,
+    borderRadius: 8,
+    margin: 8,
+    padding: 8,
+    height: 64,
+  },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: 'Gill Sans',
+    textAlign: 'center',
+    margin: 10,
+    color: '#ffffff',
+    backgroundColor: 'transparent',
   },
 });
 
