@@ -12,6 +12,7 @@ target 'CryptoWallet' do
     :hermes_enabled => false
   )
 
+
   target 'CryptoWalletTests' do
     inherit! :complete
     # Pods for testing
@@ -44,4 +45,6 @@ target 'CryptoWallet' do
       end
     end
   end
+  
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 end

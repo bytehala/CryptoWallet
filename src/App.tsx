@@ -7,9 +7,7 @@
  */
 
 import * as React from 'react';
-import type { ReactNode } from 'react';
 import {
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -18,17 +16,14 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Card, Icon} from 'react-native-elements';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+
+import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
 interface SectionProps {
-  children: any
-  title: string
+  children: any;
+  title: string;
 }
 
 const Section: React.FC<SectionProps> = ({children, title}) => {
@@ -57,6 +52,17 @@ const Section: React.FC<SectionProps> = ({children, title}) => {
   );
 };
 
+const CoinInfoCard = () => {
+  return (
+    <Card>
+      <Icon
+  name='rowing' />
+      <Card.Title>CARD WITH DIVIDER</Card.Title>
+      <Card.Divider />
+    </Card>
+  );
+};
+
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -65,33 +71,21 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edita <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <SafeAreaProvider style={backgroundStyle}>
+
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={backgroundStyle}>
+          <Header />
+          <View>
+            <CoinInfoCard />
+            <CoinInfoCard />
+            <CoinInfoCard />
+            <CoinInfoCard />
+          </View>
+        </ScrollView>
+    </SafeAreaProvider>
   );
 };
 

@@ -83,6 +83,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		03D38C8A22E84B319CC2C6C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* CryptoWallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +130,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				DA7D5894AF236A37D0D9588E /* Pods */,
+				03D38C8A22E84B319CC2C6C6 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
