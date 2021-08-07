@@ -3,7 +3,21 @@ import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import {Text} from 'react-native';
 
-const Header = () => {
+type Props = {
+  walletName: string;
+  accountValue: string;
+  profitLoss: number;
+  profitLossPercent: number;
+  isPositive: boolean;
+};
+
+const Header: React.FC<Props> = ({
+  walletName,
+  accountValue,
+  profitLoss,
+  profitLossPercent,
+  isPositive,
+}) => {
   return (
     <>
       <LinearGradient
@@ -11,12 +25,14 @@ const Header = () => {
         end={{x: 1, y: 0}}
         colors={['#9383e6', '#d47db0']}
         style={[styles.linearGradient, {height: 270}]}>
-        <Text style={[styles.walletName, styles.whiteCentered]}>Wallet</Text>
+        <Text style={[styles.walletName, styles.whiteCentered]}>
+          {walletName}
+        </Text>
         <Text style={[styles.accountValue, styles.whiteCentered]}>
-          $ 12,349.12
+          $ {accountValue}
         </Text>
         <Text style={[styles.profitLoss, styles.whiteCentered]}>
-          +$ 342.12 (53%)
+          {isPositive ? '+' : '-'}$ {profitLoss} ({profitLossPercent}%)
         </Text>
       </LinearGradient>
     </>

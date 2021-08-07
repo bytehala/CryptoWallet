@@ -20,7 +20,13 @@ const App = () => {
       contentInsetAdjustmentBehavior="automatic"
       contentContainerStyle={{marginTop: -50}}
       style={backgroundStyle}>
-      <Header />
+      <Header
+        walletName={'Wallet'}
+        accountValue={'12,349.12'}
+        profitLoss={342.12}
+        profitLossPercent={53}
+        isPositive={true}
+      />
       <View>
         <View style={{flexDirection: 'row'}}>
           <CoinQuickCard colors={['#e5b64b', '#dd8939']} />
