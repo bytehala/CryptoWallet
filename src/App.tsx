@@ -7,66 +7,11 @@
  */
 
 import * as React from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 
-import {Card, Icon} from 'react-native-elements';
+import {Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
-
-import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
-
-const CoinQuickCard = () => {
-  return (
-    <View style={styles.quickCoinCard}>
-      <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        colors={['#e5b64b', '#dd8939']}
-        style={[
-          styles.linearGradient,
-          {
-            borderRadius: 8,
-          },
-        ]}>
-        <View style={styles.cardContent}>
-          <Icon name="rowing" />
-          <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
-          <Text style={{backgroundColor: 'green'}}>CARD DIVIDER</Text>
-        </View>
-      </LinearGradient>
-    </View>
-  );
-};
-
-const CoinQuickCard2 = () => {
-  return (
-    <View style={styles.quickCoinCard}>
-      <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        colors={['#9751e3', '#7037e7']}
-        style={[
-          styles.linearGradient,
-          {
-            borderRadius: 8,
-          },
-        ]}>
-        <View style={styles.cardContent}>
-          <Icon name="rowing" />
-          <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
-          <Text style={{backgroundColor: 'green'}}>CARD DIVIDER</Text>
-        </View>
-      </LinearGradient>
-    </View>
-  );
-};
+import {CoinQuickCard} from './CoinQuickCard';
 
 const CoinInfoCard = () => {
   return (
@@ -75,8 +20,12 @@ const CoinInfoCard = () => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         colors={['#515b7a', '#242a3f']}
-        style={[styles.linearGradient, {
-          borderRadius: 8,}]}>
+        style={[
+          styles.linearGradient,
+          {
+            borderRadius: 8,
+          },
+        ]}>
         <View style={styles.cardContent}>
           <Icon name="rowing" />
           <Text style={{backgroundColor: 'red'}}>CARD DIVIDER</Text>
@@ -88,8 +37,6 @@ const CoinInfoCard = () => {
 };
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
   const backgroundStyle = {
     backgroundColor: '#404968',
   };
@@ -97,17 +44,18 @@ const App = () => {
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"
-      contentContainerStyle={{ marginTop: -50 }}
+      contentContainerStyle={{marginTop: -50}}
       style={backgroundStyle}>
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         colors={['#9383e6', '#d47db0']}
-        style={[styles.linearGradient, {height: 270}]}></LinearGradient>
+        style={[styles.linearGradient, {height: 270}]}
+      />
       <View>
         <View style={{flexDirection: 'row'}}>
-          <CoinQuickCard />
-          <CoinQuickCard2 />
+          <CoinQuickCard colors={['#e5b64b', '#dd8939']} />
+          <CoinQuickCard colors={['#9751e3', '#7037e7']} />
         </View>
         <CoinInfoCard />
         <CoinInfoCard />
